@@ -1,5 +1,5 @@
-local util = import '.././util.libsonnet';
 local common = import 'common.libsonnet';
+local util = import 'util.libsonnet';
 local target = std.extVar('schema');
 local predefined = import './predefined.jsonnet';
 
