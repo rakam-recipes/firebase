@@ -160,12 +160,6 @@ local predefined = import 'predefined.jsonnet';
       category: 'Event',
       type: 'string',
     },
-    event_server_timestamp_offset: {
-      label: 'Server timestamp offset',
-      sql: '{{TABLE}}.`event_server_timestamp_offset`',
-      category: 'Event',
-      type: 'string',
-    },
 
     // App Info
     id: {

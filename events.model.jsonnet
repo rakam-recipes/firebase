@@ -39,6 +39,7 @@ local common_measures = if (!installRevenue) then std.filter(function(measure) m
   },
   dimensions: {
     event_name: {
+      type: 'string',
       sql: '{{TABLE}}.`event_name`',
     },
   } + common.generate_user_dimensions(user_props) + common_dimensions,
