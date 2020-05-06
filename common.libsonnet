@@ -92,6 +92,7 @@ local predefined = import 'predefined.jsonnet';
       description: 'either user_id or user_pseudo_id',
       // sql: 'COALESCE({{dimension.user_id}}, {{dimension.user_pseudo_id}})',
       sql: '{{dimension.user_id}}',
+      type: 'string',
     },
     platform: {
       type: 'string',
@@ -123,9 +124,11 @@ local predefined = import 'predefined.jsonnet';
       category: 'Revenue',
       sql: '{{TABLE}}.`user_ltv`.`revenue`',
       hidden: true,
+      type: 'double',
     },
     ltv_currency: {
       category: 'Revenue',
+      type: 'string',
       sql: '{{TABLE}}.`user_ltv`.`currency`',
       hidden: true,
     },
@@ -133,6 +136,7 @@ local predefined = import 'predefined.jsonnet';
     // Event related
     traffic_source: {
       hidden: true,
+      type: 'string',
       category: 'Event',
       column: 'traffic_source',
     },
@@ -160,6 +164,7 @@ local predefined = import 'predefined.jsonnet';
       label: 'Server timestamp offset',
       sql: '{{TABLE}}.`event_server_timestamp_offset`',
       category: 'Event',
+      type: 'string',
     },
 
     // App Info
