@@ -41,7 +41,7 @@
     event_properties: {
       type: 'sql',
       parent: 'schema',
-      required: false,
+      required: true,
       description: 'You can run the query above in order to add your custom events as models',
       options: {
         sql: |||
@@ -76,8 +76,8 @@
     intradayAnalytics: {
       label: 'Enable Intraday Analytics',
       type: 'boolean',
-      default: true,
-      description: "If enabled, will also union events_intraday_* tables",
+      default: false,
+      description: 'If enabled, you will see the data for the current day as well. Please note that we will union the intraday tables which will increase the query cost.',
     },
   },
 }

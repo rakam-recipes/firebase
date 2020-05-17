@@ -1,6 +1,6 @@
 {
   name: 'Sales',
-  category: "Firebase",
+  category: 'Firebase',
   filterSchema: [
     {
       name: 'Date',
@@ -110,7 +110,6 @@
           },
           columnOptions: null,
         },
-        defaultDateRange: 'P14D',
         limit: 5000,
         filters: [
           {
@@ -174,7 +173,6 @@
           },
           columnOptions: null,
         },
-        defaultDateRange: 'P14D',
         limit: 5000,
         filters: [
           {
@@ -226,7 +224,6 @@
           },
           columnOptions: null,
         },
-        defaultDateRange: 'P14D',
         limit: 5000,
         filters: null,
         orders: null,
@@ -260,7 +257,6 @@
           },
           columnOptions: null,
         },
-        defaultDateRange: 'P14D',
         limit: 5000,
         filters: null,
         orders: null,
@@ -294,7 +290,6 @@
           },
           columnOptions: null,
         },
-        defaultDateRange: 'P14D',
         limit: 5000,
         filters: null,
         orders: null,
@@ -343,7 +338,6 @@
           },
           columnOptions: null,
         },
-        defaultDateRange: 'P14D',
         limit: 5000,
         filters: null,
         orders: null,
@@ -399,7 +393,6 @@
           },
           columnOptions: null,
         },
-        defaultDateRange: 'P14D',
         limit: 5000,
         filters: null,
         orders: null,
