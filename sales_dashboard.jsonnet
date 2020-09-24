@@ -54,9 +54,6 @@
         model: 'firebase_event_in_app_purchase',
         dimension: 'platform',
       },
-      defaultValue: [
-        'IOS',
-      ],
       isRequired: false,
     },
   ],

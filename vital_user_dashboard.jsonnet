@@ -65,47 +65,21 @@
       h: 2,
       w: 6,
       component: 'r-table',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_events',
+        model: 'firebase_events',
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_events',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'day',
-            },
-            pivot: false,
+            timeframe: 'day',
           },
         ],
         measures: [
-          {
-            name: 'active_users',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
-          {
-            name: 'all_users',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
-          {
-            name: 'new_users',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
-          {
-            name: 'paying_users',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
-          {
-            name: 'whales_playing',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
+          'active_users',
+          'all_users',
+          'new_users',
+          'paying_users',
+          'whales_playing',
         ],
         reportOptions: {
           chartOptions: {
@@ -118,8 +92,6 @@
           columnOptions: null,
         },
         limit: 1000,
-        filters: null,
-        orders: null,
       },
     },
     {
@@ -129,37 +101,19 @@
       h: 2,
       w: 3,
       component: 'r-table',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_events',
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_events',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'day',
-            },
-            pivot: false,
+            timeframe: 'day',
           },
         ],
         measures: [
-          {
-            name: 'average_revenue_per_new_user',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
-          {
-            name: 'average_revenue_per_user',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
-          {
-            name: 'average_revenue_per_retained_user',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
+          'average_revenue_per_new_user',
+          'average_revenue_per_user',
+          'average_revenue_per_retained_user',
         ],
         reportOptions: {
           chartOptions: {
