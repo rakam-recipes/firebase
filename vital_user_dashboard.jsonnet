@@ -103,7 +103,7 @@
       component: 'r-table',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_events',
+        model: 'firebase_events',
         dimensions: [
           {
             name: 'event_timestamp',
@@ -138,32 +138,18 @@
       h: 2,
       w: 3,
       component: 'r-table',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_events',
+        model: 'firebase_events',
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_events',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'day',
-            },
-            pivot: false,
+            timeframe: 'day',
           },
         ],
         measures: [
-          {
-            name: 'percent_new_users_paying',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
-          {
-            name: 'percent_retained_users_paying',
-            modelName: 'firebase_events',
-            relationName: null,
-          },
+          'percent_new_users_paying',
+          'percent_retained_users_paying',
         ],
         reportOptions: {
           chartOptions: {
@@ -175,7 +161,6 @@
           },
           columnOptions: null,
         },
-
         limit: 1000,
         filters: null,
         orders: null,
