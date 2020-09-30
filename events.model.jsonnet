@@ -11,7 +11,7 @@ local common_dimensions_all = common.dimensions + common.generate_event_dimensio
 local common_measures_all = common.measures + common.all_events_revenue_measures;
 
 
-local common_dimensions = if (!installRevenue) then util.filterObject(function(k, dimension) dimension.category != 'Revenue', common_dimensions_all) else common_dimensions_all;
+local common_dimensions = if (!installRevenue) then util.filterObject(function(k, dimension) std.objectHas(measure, 'category') && dimension.category != 'Revenue', common_dimensions_all) else common_dimensions_all;
 local common_measures = if (!installRevenue) then util.filterObject(function(k, measure) std.objectHas(measure, 'category') && measure.category != 'Revenue', common_measures_all) else common_measures_all;
 
 {
