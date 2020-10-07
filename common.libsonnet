@@ -311,10 +311,12 @@ local predefined = import 'predefined.jsonnet';
   all_events_revenue_measures: {
     revenue: {
       aggregation: 'sum',
+      category: 'Revenue',
       column: 'event_value_in_usd',
       reportOptions: { formatNumbers: '$0,0' },
     },
     average_revenue_per_user: {
+      category: 'Revenue',
       label: 'ARPU [All]',
       sql: '1.0 * ({{measure.revenue}}/{{measure.all_users}})',
       type: 'double',
@@ -324,6 +326,7 @@ local predefined = import 'predefined.jsonnet';
       aggregation: 'average',
       label: 'ARPU [New users]',
       column: 'event_value_in_usd',
+      category: 'Revenue',
       type: 'double',
       filters: [
         { dimension: 'is_retained', operator: 'is', value: false, valueType: 'boolean' },
@@ -334,6 +337,7 @@ local predefined = import 'predefined.jsonnet';
       aggregation: 'average',
       label: 'ARPU [Retained users]',
       column: 'event_value_in_usd',
+      category: 'Revenue',
       type: 'double',
       filters: [
         { dimension: 'is_retained', operator: 'is', value: true, valueType: 'boolean' },
@@ -343,6 +347,7 @@ local predefined = import 'predefined.jsonnet';
     paying_and_retained_users: {
       sql: '{{dimension.firebase_user_id}}',
       aggregation: 'countUnique',
+      category: 'Revenue',
       filters: [
         { dimension: 'is_retained', operator: 'is', value: true, valueType: 'boolean' },
         { dimension: 'is_paying', operator: 'is', value: true, valueType: 'boolean' },
@@ -352,6 +357,7 @@ local predefined = import 'predefined.jsonnet';
     },
     paying_and_new_users: {
       sql: '{{dimension.firebase_user_id}}',
+      category: 'Revenue',
       aggregation: 'countUnique',
       filters: [
         { dimension: 'is_retained', operator: 'is', value: false, valueType: 'boolean' },
@@ -362,10 +368,12 @@ local predefined = import 'predefined.jsonnet';
     },
     percent_retained_users_paying: {
       sql: '{{measure.paying_and_retained_users}}/{{measure.active_users}}',
+      category: 'Revenue',
       reportOptions: { formatNumbers: '0.0%' },
     },
     percent_new_users_paying: {
       sql: '{{measure.paying_and_new_users}}/{{measure.new_users}}',
+      category: 'Revenue',
       reportOptions: { formatNumbers: '0.0%' },
     },
   },

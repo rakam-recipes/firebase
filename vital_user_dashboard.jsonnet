@@ -76,19 +76,12 @@ local installRevenue = std.extVar('installRevenue');
             timeframe: 'day',
           },
         ],
-        measures:
-          if !installRevenue then
-            [
-              'active_users',
-              'all_users',
-              'new_users',
-            ]
-          else [
-            'active_users',
-            'all_users',
-            'new_users',
-            'paying_users',
-          ],
+        measures: [
+          'active_users',
+          'all_users',
+          'new_users',
+          'number_of_events',
+        ],
         reportOptions: {
           chartOptions: {
             type: null,
@@ -102,7 +95,7 @@ local installRevenue = std.extVar('installRevenue');
         limit: 1000,
       },
     },
-    {
+    if installRevenue then {
       name: 'ARPU',
       x: 0,
       y: 2,
@@ -156,6 +149,7 @@ local installRevenue = std.extVar('installRevenue');
           },
         ],
         measures: [
+          'paying_users',
           'percent_new_users_paying',
           'percent_retained_users_paying',
         ],
