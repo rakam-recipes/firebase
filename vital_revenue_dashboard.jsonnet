@@ -1,5 +1,5 @@
 {
-  name: 'VITAL (Revenue)',
+  name: 'Overall (Revenue)',
   category: 'Firebase',
   filterSchema: [
     {

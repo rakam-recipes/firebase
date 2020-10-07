@@ -1,5 +1,7 @@
+local installRevenue = std.extVar('installRevenue');
+
 {
-  name: 'VITAL (User)',
+  name: 'Overall (User)',
   category: 'Firebase',
   filterSchema: [
     {
@@ -74,13 +76,19 @@
             timeframe: 'day',
           },
         ],
-        measures: [
-          'active_users',
-          'all_users',
-          'new_users',
-          'paying_users',
-          'whales_playing',
-        ],
+        measures:
+          if !installRevenue then
+            [
+              'active_users',
+              'all_users',
+              'new_users',
+            ]
+          else [
+            'active_users',
+            'all_users',
+            'new_users',
+            'paying_users',
+          ],
         reportOptions: {
           chartOptions: {
             type: null,
@@ -131,7 +139,7 @@
         orders: null,
       },
     },
-    {
+    if installRevenue then {
       name: 'User Conversion',
       x: 3,
       y: 2,
