@@ -99,6 +99,11 @@ local predefined = import 'predefined.jsonnet';
       category: 'Event',
       column: 'platform',
     },
+    is_retained: {
+      type: 'boolean',
+      category: 'Event',
+      sql: 'TIMESTAMP_DIFF({{dimension.event_timestamp}}, {{dimension.user_first_touch}}, DAY) > 1',
+    },
     // Revenue
     event_value_in_usd: {
       type: 'double',
@@ -109,11 +114,6 @@ local predefined = import 'predefined.jsonnet';
       type: 'boolean',
       category: 'Revenue',
       sql: "{{TABLE}}.`user_ltv`.`revenue` > 99 AND {{TABLE}}.`user_ltv`.`currency` = 'USD'",
-    },
-    is_retained: {
-      type: 'boolean',
-      category: 'Revenue',
-      sql: 'TIMESTAMP_DIFF({{dimension.event_timestamp}}, {{dimension.user_first_touch}}, DAY) > 1',
     },
     is_paying: {
       type: 'boolean',
