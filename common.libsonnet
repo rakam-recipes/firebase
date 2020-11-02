@@ -91,7 +91,7 @@ local predefined = import 'predefined.jsonnet';
       label: 'User Id',
       description: 'either user_id or user_pseudo_id',
       // sql: 'COALESCE({{dimension.user_id}}, {{dimension.user_pseudo_id}})',
-      sql: '{{dimension.user_id}}',
+      sql: '{{dimension.user_pseudo_id}}',
       type: 'string',
     },
     platform: {
