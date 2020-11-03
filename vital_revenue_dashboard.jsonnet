@@ -67,59 +67,20 @@
       component: 'r-table',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'day',
-            },
-            pivot: false,
+            timeframe: 'day'
           },
         ],
         measures: [
-          {
-            name: 'revenue_from_new_users',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-          {
-            name: 'revenue_from_retained_users',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-          {
-            name: 'revenue_from_whales',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-          {
-            name: 'revenue_whales_ratio',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-          {
-            name: 'revenue',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: null,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
-        },
-        limit: 1000,
-        filters: null,
-        orders: null,
+          'revenue_from_new_users',
+          'revenue_from_retained_users',
+          'revenue_from_whales',
+          'revenue_whales_ratio',
+          'revenue',
+        ]
       },
     },
     {
@@ -131,44 +92,17 @@
       component: 'r-table',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'day',
-            },
-            pivot: false,
+            timeframe: 'day'
           },
         ],
         measures: [
-          {
-            name: 'average_transaction_per_paying_user',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-          {
-            name: 'transaction_count_per_paying_user',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: null,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
-        },
-        limit: 1000,
-        filters: null,
-        orders: null,
+          'average_transaction_per_paying_user',
+          'transaction_count_per_paying_user',
+        ]
       },
     },
   ],
