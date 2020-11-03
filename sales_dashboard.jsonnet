@@ -67,32 +67,16 @@
       component: 'r-table',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'day',
-            },
-            pivot: null,
+            timeframe: 'day',
           },
-          {
-            name: 'country',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: null,
-            pivot: true,
-          },
+          'firebase_event_in_app_purchase',
         ],
         measures: [
-          {
-            name: 'total_transactions',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
+          'total_transactions',
         ],
         reportOptions: {
           chartOptions: {
@@ -110,22 +94,9 @@
         limit: 5000,
         filters: [
           {
-            type: 'metricFilter',
-            value: {
-              metricType: 'measure',
-              metricValue: {
-                name: 'total_transactions',
-                modelName: 'firebase_event_in_app_purchase',
-                relationName: null,
-              },
-              filters: [
-                {
-                  valueType: 'double',
-                  operator: 'greaterThan',
-                  value: 1,
-                },
-              ],
-            },
+            measure: 'total_transactions',
+            operator: 'greaterThan',
+            value: 1
           },
         ],
         orders: null,
@@ -140,22 +111,12 @@
       component: 'r-chart',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: [
-          {
-            name: 'country',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: null,
-            pivot: null,
-          },
+          'country'
         ],
         measures: [
-          {
-            name: 'paying_users',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
+          'paying_users',
         ],
         reportOptions: {
           chartOptions: {
@@ -173,22 +134,9 @@
         limit: 5000,
         filters: [
           {
-            type: 'metricFilter',
-            value: {
-              metricType: 'measure',
-              metricValue: {
-                name: 'total_transactions',
-                modelName: 'firebase_event_in_app_purchase',
-                relationName: null,
-              },
-              filters: [
-                {
-                  valueType: 'double',
-                  operator: 'greaterThan',
-                  value: 1,
-                },
-              ],
-            },
+            measure: 'total_transactions',
+            operator: 'greaterThan',
+            value: 1
           },
         ],
         orders: null,
@@ -206,24 +154,8 @@
         modelName: 'firebase_event_in_app_purchase',
         dimensions: null,
         measures: [
-          {
-            name: 'revenue_from_retained_users',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
-        ],
-        reportOptions: {
-          chartOptions: {
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
-        },
-        limit: 5000,
-        filters: null,
-        orders: null,
+          'revenue_from_retained_users',
+        ]
       },
     },
     {
@@ -238,11 +170,7 @@
         modelName: 'firebase_event_in_app_purchase',
         dimensions: null,
         measures: [
-          {
-            name: 'revenue',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
+          'revenue',
         ],
         reportOptions: {
           chartOptions: {
