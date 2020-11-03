@@ -65,7 +65,7 @@
       h: 2,
       w: 6,
       component: 'r-table',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: [
@@ -129,7 +129,7 @@
       h: 2,
       w: 6,
       component: 'r-table',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: [

@@ -65,7 +65,7 @@
       h: 2,
       w: 3,
       component: 'r-table',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: [
@@ -138,7 +138,7 @@
       h: 2,
       w: 3,
       component: 'r-chart',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: [
@@ -201,7 +201,7 @@
       h: 1,
       w: 2,
       component: 'r-number',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: null,
@@ -233,7 +233,7 @@
       h: 1,
       w: 2,
       component: 'r-number',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: null,
@@ -266,7 +266,7 @@
       h: 1,
       w: 2,
       component: 'r-number',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: null,
@@ -300,7 +300,7 @@
       h: 2,
       w: 3,
       component: 'r-chart',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: [
@@ -348,7 +348,7 @@
       h: 2,
       w: 3,
       component: 'r-chart',
-      type: 1,
+      type: 'segmentation',
       reportOptions: {
         modelName: 'firebase_event_in_app_purchase',
         dimensions: [
