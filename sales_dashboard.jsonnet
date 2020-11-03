@@ -263,32 +263,16 @@
       component: 'r-chart',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'day',
-            },
-            pivot: null,
+            timeframe: 'day',
           },
-          {
-            name: 'event__product_id',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: null,
-            pivot: true,
-          },
+          'event__product_id',
         ],
         measures: [
-          {
-            name: 'all_users',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
+          'all_users',
         ],
         reportOptions: {
           chartOptions: {
