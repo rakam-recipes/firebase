@@ -225,7 +225,7 @@
       component: 'r-chart',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: [
           {
             name: 'event_timestamp',
