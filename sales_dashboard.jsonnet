@@ -166,7 +166,7 @@
       component: 'r-number',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: null,
         measures: [
           'revenue',
@@ -195,14 +195,10 @@
       component: 'r-number',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
+        model: 'firebase_event_in_app_purchase',
         dimensions: null,
         measures: [
-          {
-            name: 'revenue_from_new_users',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
+          'revenue_from_new_users',
         ],
         reportOptions: {
           chartOptions: {
@@ -233,21 +229,11 @@
         dimensions: [
           {
             name: 'event_timestamp',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-            postOperation: {
-              type: 'timestamp',
-              value: 'hourOfDay',
-            },
-            pivot: null,
+            timeframe: 'hourOfDay'
           },
         ],
         measures: [
-          {
-            name: 'all_users',
-            modelName: 'firebase_event_in_app_purchase',
-            relationName: null,
-          },
+          'all_users',
         ],
         reportOptions: {
           chartOptions: {
