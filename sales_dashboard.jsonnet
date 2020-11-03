@@ -151,8 +151,7 @@
       component: 'r-number',
       type: 'segmentation',
       reportOptions: {
-        modelName: 'firebase_event_in_app_purchase',
-        dimensions: null,
+        model: 'firebase_event_in_app_purchase',
         measures: [
           'revenue_from_retained_users',
         ]
