@@ -37,7 +37,7 @@ local predefined = import 'predefined.jsonnet';
     //   rel_sessions: {
     //     relationType: 'oneToOne',
     //     joinType: 'leftJoin',
-    //     modelName: 'sessions',
+    //     model: 'sessions',
     //     sql: |||
     //       {{dimension.user_pseudo_id}} = sessions.user_pseudo_id
     //       AND {{dimension.event_timestamp}} >= {{model.sessions.dimension.session_start.filter}}
