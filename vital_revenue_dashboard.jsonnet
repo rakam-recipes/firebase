@@ -3,51 +3,28 @@
   category: 'Firebase',
   filterSchema: {
     Date: {
-      type: 'mappingDimension',
-      value: {
-        name: 'eventTimestamp',
-      },
+      mappingDimension: 'eventTimestamp',
       defaultValue: 'P14D',
       isRequired: true,
     },
     Country: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_event_in_app_purchase',
-        dimension: 'country',
-      },
+      dimension: 'firebase_events.country',
       isRequired: false,
     },
     Continent: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_event_in_app_purchase',
-        dimension: 'continent',
-      },
+      dimension: 'firebase_events.continent',
       isRequired: false,
     },
     'Install Source': {
-      type: 'dimension',
-      value: {
-        model: 'firebase_event_in_app_purchase',
-        dimension: 'install_source',
-      },
+      dimension: 'firebase_events.install_source',
       isRequired: false,
     },
     Version: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_event_in_app_purchase',
-        dimension: 'version',
-      },
+      dimension: 'firebase_events.version',
       isRequired: false,
     },
     Platform: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_event_in_app_purchase',
-        dimension: 'platform',
-      },
+      dimension: 'firebase_events.platform',
       isRequired: false,
     },
   },

@@ -5,51 +5,28 @@ local installRevenue = std.extVar('installRevenue');
   category: 'Firebase',
   filterSchema: {
     Date: {
-      type: 'mappingDimension',
-      value: {
-        name: 'eventTimestamp',
-      },
+      mappingDimension: 'eventTimestamp',
       defaultValue: 'P14D',
       isRequired: true,
     },
     Country: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_events',
-        dimension: 'country',
-      },
+      dimension: 'firebase_events.country',
       isRequired: false,
     },
     Continent: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_events',
-        dimension: 'continent',
-      },
+      dimension: 'firebase_events.continent',
       isRequired: false,
     },
     'Install Source': {
-      type: 'dimension',
-      value: {
-        model: 'firebase_events',
-        dimension: 'install_source',
-      },
+      dimension: 'firebase_events.install_source',
       isRequired: false,
     },
     Version: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_events',
-        dimension: 'version',
-      },
+      dimension: 'firebase_events.version',
       isRequired: false,
     },
     Platform: {
-      type: 'dimension',
-      value: {
-        model: 'firebase_events',
-        dimension: 'platform',
-      },
+      dimension: 'firebase_events.platform',
       isRequired: false,
     },
   },
