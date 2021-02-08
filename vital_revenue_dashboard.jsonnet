@@ -1,7 +1,7 @@
 {
   name: 'Overall (Revenue)',
   category: 'Firebase',
-  filterSchema: [
+  filterSchema: {
     Date: {
       type: 'mappingDimension',
       value: {
@@ -26,7 +26,7 @@
       },
       isRequired: false,
     },
-    "Install Source": {
+    'Install Source': {
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -52,7 +52,7 @@
       },
       isRequired: false,
     },
-  ],
+  },
   reports: [
     {
       name: 'Revenue',
@@ -67,7 +67,7 @@
         dimensions: [
           {
             name: 'event_timestamp',
-            timeframe: 'day'
+            timeframe: 'day',
           },
         ],
         measures: [
@@ -76,7 +76,7 @@
           'revenue_from_whales',
           'revenue_whales_ratio',
           'revenue',
-        ]
+        ],
       },
     },
     {
@@ -92,13 +92,13 @@
         dimensions: [
           {
             name: 'event_timestamp',
-            timeframe: 'day'
+            timeframe: 'day',
           },
         ],
         measures: [
           'average_transaction_per_paying_user',
           'transaction_count_per_paying_user',
-        ]
+        ],
       },
     },
   ],
