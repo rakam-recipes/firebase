@@ -44,7 +44,7 @@
       required: true,
       description: 'You can run the query above in order to add your custom events as models',
       options: {
-        automatic: true,
+        // automatic: true,
         sql: |||
           SELECT DISTINCT
           event_name as event_db,
