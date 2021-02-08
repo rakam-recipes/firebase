@@ -3,7 +3,6 @@
   category: 'Firebase',
   filterSchema: {
     Date: {
-      name: 'Date',
       type: 'mappingDimension',
       value: {
         name: 'eventTimestamp',
@@ -12,7 +11,6 @@
       isRequired: true,
     },
     Country: {
-      name: 'Country',
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -29,7 +27,6 @@
       isRequired: false,
     },
     'App Version': {
-      name: 'App Version',
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -46,7 +43,6 @@
       isRequired: false,
     },
     Platform: {
-      name: 'Platform',
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',

@@ -35,7 +35,6 @@
       isRequired: false,
     },
     Version: {
-      name: 'Version',
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -44,7 +43,6 @@
       isRequired: false,
     },
     Platform: {
-      name: 'Platform',
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
