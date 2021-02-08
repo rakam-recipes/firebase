@@ -2,8 +2,7 @@
   name: 'Overall (Revenue)',
   category: 'Firebase',
   filterSchema: [
-    {
-      name: 'Date',
+    Date: {
       type: 'mappingDimension',
       value: {
         name: 'eventTimestamp',
@@ -11,8 +10,7 @@
       defaultValue: 'P14D',
       isRequired: true,
     },
-    {
-      name: 'Country',
+    Country: {
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -20,8 +18,7 @@
       },
       isRequired: false,
     },
-    {
-      name: 'Continent',
+    Continent: {
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -29,8 +26,7 @@
       },
       isRequired: false,
     },
-    {
-      name: 'Install Source',
+    "Install Source": {
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -38,7 +34,7 @@
       },
       isRequired: false,
     },
-    {
+    Version: {
       name: 'Version',
       type: 'dimension',
       value: {
@@ -47,7 +43,7 @@
       },
       isRequired: false,
     },
-    {
+    Platform: {
       name: 'Platform',
       type: 'dimension',
       value: {

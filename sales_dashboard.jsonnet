@@ -1,8 +1,8 @@
 {
   name: 'Sales',
   category: 'Firebase',
-  filterSchema: [
-    {
+  filterSchema: {
+    Date: {
       name: 'Date',
       type: 'mappingDimension',
       value: {
@@ -11,7 +11,7 @@
       defaultValue: 'P14D',
       isRequired: true,
     },
-    {
+    Country: {
       name: 'Country',
       type: 'dimension',
       value: {
@@ -20,8 +20,7 @@
       },
       isRequired: false,
     },
-    {
-      name: 'Install Source',
+    'Install Source': {
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -29,7 +28,7 @@
       },
       isRequired: false,
     },
-    {
+    'App Version': {
       name: 'App Version',
       type: 'dimension',
       value: {
@@ -38,8 +37,7 @@
       },
       isRequired: false,
     },
-    {
-      name: 'Product ID',
+    'Product ID': {
       type: 'dimension',
       value: {
         model: 'firebase_event_in_app_purchase',
@@ -47,7 +45,7 @@
       },
       isRequired: false,
     },
-    {
+    Platform: {
       name: 'Platform',
       type: 'dimension',
       value: {
@@ -56,7 +54,7 @@
       },
       isRequired: false,
     },
-  ],
+  },
   reports: [
     {
       name: 'Daily sales per country',
@@ -96,7 +94,7 @@
           {
             measure: 'total_transactions',
             operator: 'greaterThan',
-            value: 1
+            value: 1,
           },
         ],
         orders: null,
@@ -113,7 +111,7 @@
       reportOptions: {
         model: 'firebase_event_in_app_purchase',
         dimensions: [
-          'country'
+          'country',
         ],
         measures: [
           'paying_users',
@@ -136,7 +134,7 @@
           {
             measure: 'total_transactions',
             operator: 'greaterThan',
-            value: 1
+            value: 1,
           },
         ],
         orders: null,
@@ -154,7 +152,7 @@
         model: 'firebase_event_in_app_purchase',
         measures: [
           'revenue_from_retained_users',
-        ]
+        ],
       },
     },
     {
@@ -229,7 +227,7 @@
         dimensions: [
           {
             name: 'event_timestamp',
-            timeframe: 'hourOfDay'
+            timeframe: 'hourOfDay',
           },
         ],
         measures: [
