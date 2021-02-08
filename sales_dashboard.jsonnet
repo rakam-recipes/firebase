@@ -1,267 +1,195 @@
 {
   name: 'Sales',
   category: 'Firebase',
-  filterSchema: {
+  filters: {
     Date: {
       mappingDimension: 'eventTimestamp',
       default: 'P14D',
       required: true,
     },
     Country: {
-      dimension: 'firebase_events.country',
-      required: false,
-    },
-    Continent: {
-      dimension: 'firebase_events.continent',
+      model: 'firebase_event_in_app_purchase',
+      dimension: 'country',
       required: false,
     },
     'Install Source': {
-      dimension: 'firebase_events.install_source',
+      model: 'firebase_event_in_app_purchase',
+      dimension: 'install_source',
       required: false,
     },
-    Version: {
-      dimension: 'firebase_events.version',
+    'App Version': {
+      model: 'firebase_event_in_app_purchase',
+      dimension: 'version',
+      required: false,
+    },
+    'Product ID': {
+      model: 'firebase_event_in_app_purchase',
+      dimension: 'event__product_id',
       required: false,
     },
     Platform: {
-      dimension: 'firebase_events.platform',
+      model: 'firebase_event_in_app_purchase',
+      dimension: 'platform',
+      default: ['IOS'],
       required: false,
     },
   },
-  reports: [
-    {
-      name: 'Daily sales per country',
-      x: 0,
-      y: 3,
-      h: 2,
-      w: 3,
-      component: 'r-table',
-      type: 'segmentation',
+  reports: [{
+    name: 'Daily sales per country',
+    x: 0,
+    y: 3,
+    height: 2,
+    width: 3,
+    component: 'r-table',
+    type: 'segmentation',
+    options: {
+      model: 'firebase_event_in_app_purchase',
+      measures: ['total_transactions'],
+      dimensions: [{
+        name: 'event_timestamp',
+        timeframe: 'day',
+      }, 'country'],
+      filters: [{
+        measure: 'total_transactions',
+        operator: 'greaterThan',
+        value: 1,
+      }],
       reportOptions: {
-        model: 'firebase_event_in_app_purchase',
-        dimensions: [
-          {
-            name: 'event_timestamp',
-            timeframe: 'day',
-          },
-          'firebase_event_in_app_purchase',
-        ],
-        measures: [
-          'total_transactions',
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: 'area',
-            showLabels: true,
-            showLegend: false,
-            interactive: true,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
+        chartOptions: {
+          type: 'area',
+          showLabels: true,
+          showLegend: false,
+          interactive: true,
         },
-        limit: 5000,
-        filters: [
-          {
-            measure: 'total_transactions',
-            operator: 'greaterThan',
-            value: 1,
-          },
-        ],
-        orders: null,
       },
+      limit: 5000,
     },
-    {
-      name: 'Most paying countries',
-      x: 3,
-      y: 3,
-      h: 2,
-      w: 3,
-      component: 'r-chart',
-      type: 'segmentation',
+  }, {
+    name: 'Most paying countries',
+    x: 3,
+    y: 3,
+    height: 2,
+    width: 3,
+    component: 'r-chart',
+    type: 'segmentation',
+    options: {
+      model: 'firebase_event_in_app_purchase',
+      measures: ['paying_users'],
+      dimensions: ['country'],
+      filters: [{
+        measure: 'total_transactions',
+        operator: 'greaterThan',
+        value: 1,
+      }],
       reportOptions: {
-        model: 'firebase_event_in_app_purchase',
-        dimensions: [
-          'country',
-        ],
-        measures: [
-          'paying_users',
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: 'pie',
-            showLabels: true,
-            showLegend: false,
-            columnOptions: [],
-            showPercentage: true,
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
+        chartOptions: {
+          type: 'pie',
+          showLabels: true,
+          showLegend: false,
+          showPercentage: true,
         },
-        limit: 5000,
-        filters: [
-          {
-            measure: 'total_transactions',
-            operator: 'greaterThan',
-            value: 1,
-          },
-        ],
-        orders: null,
       },
+      limit: 5000,
     },
-    {
-      name: 'Total Sales (Retained Users)',
-      x: 2,
-      y: 0,
-      h: 1,
-      w: 2,
-      component: 'r-number',
-      type: 'segmentation',
-      reportOptions: {
-        model: 'firebase_event_in_app_purchase',
-        measures: [
-          'revenue_from_retained_users',
-        ],
-      },
+  }, {
+    name: 'Total Sales (Retained Users)',
+    x: 2,
+    y: 0,
+    height: 1,
+    width: 2,
+    component: 'r-number',
+    type: 'segmentation',
+    options: {
+      model: 'firebase_event_in_app_purchase',
+      measures: ['revenue_from_retained_users'],
+      reportOptions: {},
+      limit: 5000,
     },
-    {
-      name: 'Total Sales',
-      x: 0,
-      y: 0,
-      h: 1,
-      w: 2,
-      component: 'r-number',
-      type: 'segmentation',
+  }, {
+    name: 'Total Sales',
+    x: 0,
+    y: 0,
+    height: 1,
+    width: 2,
+    component: 'r-number',
+    type: 'segmentation',
+    options: {
+      model: 'firebase_event_in_app_purchase',
+      measures: ['revenue'],
       reportOptions: {
-        model: 'firebase_event_in_app_purchase',
-        dimensions: null,
-        measures: [
-          'revenue',
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: null,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
+        chartOptions: {
+          type: null,
         },
-        limit: 5000,
-        filters: null,
-        orders: null,
       },
+      limit: 5000,
     },
-    {
-      name: 'Total Sales (New Users)',
-      x: 4,
-      y: 0,
-      h: 1,
-      w: 2,
-      component: 'r-number',
-      type: 'segmentation',
+  }, {
+    name: 'Total Sales (New Users)',
+    x: 4,
+    y: 0,
+    height: 1,
+    width: 2,
+    component: 'r-number',
+    type: 'segmentation',
+    options: {
+      model: 'firebase_event_in_app_purchase',
+      measures: ['revenue_from_new_users'],
       reportOptions: {
-        model: 'firebase_event_in_app_purchase',
-        dimensions: null,
-        measures: [
-          'revenue_from_new_users',
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: null,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
+        chartOptions: {
+          type: null,
         },
-        limit: 5000,
-        filters: null,
-        orders: null,
       },
+      limit: 5000,
     },
-    {
-      name: 'Purchases HOD',
-      ttl: 'PT24H',
-      x: 3,
-      y: 1,
-      h: 2,
-      w: 3,
-      component: 'r-chart',
-      type: 'segmentation',
+  }, {
+    name: 'Purchases HOD',
+    x: 3,
+    y: 1,
+    height: 2,
+    width: 3,
+    component: 'r-chart',
+    type: 'segmentation',
+    options: {
+      model: 'firebase_event_in_app_purchase',
+      measures: ['all_users'],
+      dimensions: [{
+        name: 'event_timestamp',
+        timeframe: 'hour_of_day',
+      }],
       reportOptions: {
-        model: 'firebase_event_in_app_purchase',
-        dimensions: [
-          {
-            name: 'event_timestamp',
-            timeframe: 'hourOfDay',
-          },
-        ],
-        measures: [
-          'all_users',
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: 'bar',
-            showLabels: true,
-            showLegend: false,
-            interactive: true,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
+        chartOptions: {
+          type: 'bar',
+          showLabels: true,
+          showLegend: false,
+          interactive: true,
         },
-        limit: 5000,
-        filters: null,
-        orders: null,
       },
+      limit: 5000,
     },
-    {
-      name: 'Daily Purchases',
-      ttl: 'PT24H',
-      x: 0,
-      y: 1,
-      h: 2,
-      w: 3,
-      component: 'r-chart',
-      type: 'segmentation',
+  }, {
+    name: 'Daily Purchases',
+    x: 0,
+    y: 1,
+    height: 2,
+    width: 3,
+    component: 'r-chart',
+    type: 'segmentation',
+    options: {
+      model: 'firebase_event_in_app_purchase',
+      measures: ['all_users'],
+      dimensions: [{
+        name: 'event_timestamp',
+        timeframe: 'day',
+      }, 'event__product_id'],
       reportOptions: {
-        model: 'firebase_event_in_app_purchase',
-        dimensions: [
-          {
-            name: 'event_timestamp',
-            timeframe: 'day',
-          },
-          'event__product_id',
-        ],
-        measures: [
-          'all_users',
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: 'area',
-            showLabels: true,
-            showLegend: true,
-            interactive: true,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
+        chartOptions: {
+          type: 'area',
+          showLabels: true,
+          showLegend: true,
+          interactive: true,
         },
-        limit: 5000,
-        filters: null,
-        orders: null,
       },
+      limit: 5000,
     },
-  ],
+  }],
 }

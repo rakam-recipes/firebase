@@ -35,33 +35,44 @@ local installRevenue = std.extVar('installRevenue');
       name: 'Users',
       x: 0,
       y: 0,
-      h: 2,
-      w: 6,
+      height: 2,
+      width: 6,
       component: 'r-table',
       type: 'segmentation',
-      reportOptions: {
+      options: {
         model: 'firebase_events',
-        dimensions: [
-          {
-            name: 'event_timestamp',
-            timeframe: 'day',
-          },
-        ],
-        measures: [
-          'active_users',
-          'all_users',
-          'new_users',
-          'number_of_events',
-        ],
+        measures: ['active_users', 'all_users', 'new_users', 'paying_users', 'whales_playing'],
+        dimensions: [{
+          name: 'event_timestamp',
+          timeframe: 'day',
+        }],
         reportOptions: {
           chartOptions: {
             type: null,
-            columnOptions: [],
           },
-          tableOptions: {
-            columnOptions: [],
+        },
+        limit: 1000,
+      },
+    },
+    {
+      name: 'ARPU',
+      x: 0,
+      y: 2,
+      height: 2,
+      width: 3,
+      component: 'r-table',
+      type: 'segmentation',
+      options: {
+        model: 'firebase_events',
+        measures: ['average_revenue_per_new_user', 'average_revenue_per_user', 'average_revenue_per_retained_user'],
+        dimensions: [{
+          name: 'event_timestamp',
+          timeframe: 'day',
+        }],
+        reportOptions: {
+          chartOptions: {
+            type: null,
           },
-          columnOptions: null,
         },
         limit: 1000,
       },
@@ -107,36 +118,23 @@ local installRevenue = std.extVar('installRevenue');
       name: 'User Conversion',
       x: 3,
       y: 2,
-      h: 2,
-      w: 3,
+      height: 2,
+      width: 3,
       component: 'r-table',
       type: 'segmentation',
-      reportOptions: {
+      options: {
         model: 'firebase_events',
-        dimensions: [
-          {
-            name: 'event_timestamp',
-            timeframe: 'day',
-          },
-        ],
-        measures: [
-          'paying_users',
-          'percent_new_users_paying',
-          'percent_retained_users_paying',
-        ],
+        measures: ['percent_new_users_paying', 'percent_retained_users_paying'],
+        dimensions: [{
+          name: 'event_timestamp',
+          timeframe: 'day',
+        }],
         reportOptions: {
           chartOptions: {
             type: null,
-            columnOptions: [],
           },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
         },
         limit: 1000,
-        filters: null,
-        orders: null,
       },
     },
   ],
