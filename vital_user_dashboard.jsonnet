@@ -54,7 +54,7 @@ local installRevenue = std.extVar('installRevenue');
         limit: 1000,
       },
     },
-    {
+    if installRevenue then {
       name: 'ARPU',
       x: 0,
       y: 2,
@@ -75,43 +75,6 @@ local installRevenue = std.extVar('installRevenue');
           },
         },
         limit: 1000,
-      },
-    },
-    if installRevenue then {
-      name: 'ARPU',
-      x: 0,
-      y: 2,
-      h: 2,
-      w: 3,
-      component: 'r-table',
-      type: 'segmentation',
-      reportOptions: {
-        model: 'firebase_events',
-        dimensions: [
-          {
-            name: 'event_timestamp',
-            timeframe: 'day',
-          },
-        ],
-        measures: [
-          'average_revenue_per_new_user',
-          'average_revenue_per_user',
-          'average_revenue_per_retained_user',
-        ],
-        reportOptions: {
-          chartOptions: {
-            type: null,
-            columnOptions: [],
-          },
-          tableOptions: {
-            columnOptions: [],
-          },
-          columnOptions: null,
-        },
-
-        limit: 1000,
-        filters: null,
-        orders: null,
       },
     },
     if installRevenue then {
