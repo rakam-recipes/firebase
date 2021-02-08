@@ -4,28 +4,28 @@
   filterSchema: {
     Date: {
       mappingDimension: 'eventTimestamp',
-      defaultValue: 'P14D',
-      isRequired: true,
+      default: 'P14D',
+      required: true,
     },
     Country: {
       dimension: 'firebase_events.country',
-      isRequired: false,
+      required: false,
     },
     Continent: {
       dimension: 'firebase_events.continent',
-      isRequired: false,
+      required: false,
     },
     'Install Source': {
       dimension: 'firebase_events.install_source',
-      isRequired: false,
+      required: false,
     },
     Version: {
       dimension: 'firebase_events.version',
-      isRequired: false,
+      required: false,
     },
     Platform: {
       dimension: 'firebase_events.platform',
-      isRequired: false,
+      required: false,
     },
   },
   reports: [
