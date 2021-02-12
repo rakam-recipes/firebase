@@ -134,11 +134,20 @@ local predefined = import 'predefined.jsonnet';
     },
 
     // Event related
-    traffic_source: {
-      hidden: true,
+    traffic_source_name: {
       type: 'string',
       category: 'Event',
-      column: 'traffic_source',
+      column: 'traffic_source.name',
+    },
+    traffic_source_medium: {
+      type: 'string',
+      category: 'Event',
+      column: 'traffic_source.medium',
+    },
+    traffic_source_source: {
+      type: 'string',
+      category: 'Event',
+      column: 'traffic_source.source',
     },
     user_first_touch: {
       description: 'The time at which the user first opened the app.',
