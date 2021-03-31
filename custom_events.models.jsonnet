@@ -23,13 +23,13 @@ std.map(function(event_type)
   {
     name: 'firebase_event_' + event_type,
     label: (if defined != null then '[Firebase] ' else '') + event_type,
-    measures: common.measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
+    measures: common.measures + common.all_events_revenue_measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
     mappings: common.mappings,
     category: 'Firebase Events',
     relations: common.relations + if defined != null && std.objectHas(defined, 'relations') then defined.relations else {},
     sql: |||
       SELECT * FROM `%(project)s`.`%(dataset)s`.`events_*`
-      {%% if partitioned %%} WHERE event_name = '%(event)s' AND _TABLE_SUFFIX BETWEEN FORMAT_DATE("%%Y%%m%%d", DATE '{{date.start}}') and FORMAT_DATE("%%Y%%m%%d", DATE '{{date.end}}') {%% endif %%}
+      WHERE event_name = '%(event)s' {%% if partitioned %%} AND _TABLE_SUFFIX BETWEEN FORMAT_DATE("%%Y%%m%%d", DATE '{{date.start}}') and FORMAT_DATE("%%Y%%m%%d", DATE '{{date.end}}') {%% endif %%}
       %(intraday_query)s
     ||| % {
       project: target.database,

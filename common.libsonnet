@@ -146,6 +146,7 @@ local predefined = import 'predefined.jsonnet';
     },
     traffic_source_source: {
       type: 'string',
+      label: 'Traffic Source Channel',
       category: 'Event',
       sql: '`traffic_source`.`source`',
     },
