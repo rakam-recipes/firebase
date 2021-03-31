@@ -67,6 +67,23 @@ local predefined = import 'predefined.jsonnet';
         { dimension: 'is_retained', operator: 'is', value: false, valueType: 'boolean' },
       ],
     },
+    ltv_revenue_total: {
+      aggregation: 'max',
+      label: 'Revenue',
+      sql: '{{dimension.ltv_revenue}}',
+    },
+    ltv_revenue_d1: {
+      aggregation: 'max',
+      label: 'D1 LTV',
+      sql: '{{dimension.ltv_revenue}}',
+      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P1D' }],
+    },
+    ltv_revenue_d7: {
+      aggregation: 'max',
+      label: 'D7 LTV',
+      sql: '{{dimension.ltv_revenue}}',
+      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P7D' }],
+    },
     whales_playing: {
       aggregation: 'countUnique',
       sql: '{{dimension.firebase_user_id}}',
