@@ -68,18 +68,18 @@ local predefined = import 'predefined.jsonnet';
       ],
     },
     ltv_revenue_total: {
-      aggregation: 'max',
+      aggregation: 'maximum',
       label: 'Revenue',
       sql: '{{dimension.ltv_revenue}}',
     },
     ltv_revenue_d1: {
-      aggregation: 'max',
+      aggregation: 'maximum',
       label: 'D1 LTV',
       sql: '{{dimension.ltv_revenue}}',
       filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P1D' }],
     },
     ltv_revenue_d7: {
-      aggregation: 'max',
+      aggregation: 'maximum',
       label: 'D7 LTV',
       sql: '{{dimension.ltv_revenue}}',
       filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P7D' }],
