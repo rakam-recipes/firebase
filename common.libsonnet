@@ -76,13 +76,13 @@ local predefined = import 'predefined.jsonnet';
       aggregation: 'maximum',
       label: 'D1 LTV',
       sql: '{{dimension.ltv_revenue}}',
-      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P1D' }],
+      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P1D', valueType: 'timestamp' }],
     },
     ltv_revenue_d7: {
       aggregation: 'maximum',
       label: 'D7 LTV',
       sql: '{{dimension.ltv_revenue}}',
-      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P7D' }],
+      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P7D', valueType: 'timestamp' }],
     },
     whales_playing: {
       aggregation: 'countUnique',
