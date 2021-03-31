@@ -123,7 +123,7 @@ local predefined = import 'predefined.jsonnet';
     ltv_revenue: {
       category: 'Revenue',
       sql: '{{TABLE}}.`user_ltv`.`revenue`',
-      hidden: true,
+      hidden: false,
       type: 'double',
     },
     ltv_currency: {

@@ -23,7 +23,7 @@ std.map(function(event_type)
   {
     name: 'firebase_event_' + event_type,
     label: (if defined != null then '[Firebase] ' else '') + event_type,
-    measures: common.measures + common.all_events_revenue_measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
+    measures: common.measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
     mappings: common.mappings,
     category: 'Firebase Events',
     relations: common.relations + if defined != null && std.objectHas(defined, 'relations') then defined.relations else {},
