@@ -124,6 +124,8 @@ local predefined = import 'predefined.jsonnet';
     event_value_in_usd: {
       type: 'double',
       category: 'Revenue',
+      // it's only available in in_app_purchase
+      hidden: true,
       column: 'event_value_in_usd',
     },
     is_whale: {
