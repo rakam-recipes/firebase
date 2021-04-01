@@ -67,19 +67,20 @@ local predefined = import 'predefined.jsonnet';
         { dimension: 'is_retained', operator: 'is', value: false, valueType: 'boolean' },
       ],
     },
-    revenue: {
-      aggregation: 'sum',
+    ltv_revenue_total: {
+      aggregation: 'max',
       category: 'Revenue',
-      column: 'event_value_in_usd',
+      sql: '{{dimension.ltv_revenue}}',
       reportOptions: { formatNumbers: '$0,0' },
-      filters: [{ dimension: 'event_name', operator: 'equals', value: 'in_app_purchase', valueType: 'string' }],
     },
-    ltv_revenue_d1: {
+    ltv_revenue_d7: {
       label: 'D1 LTV',
-      sql: '{{measure.revenue}}/{{measure.all_users}}',
+      category: 'Revenue',
+      aggregation: 'average',
+      sql: '{{measure.ltv_revenue_total}}/{{measure.all_users}}',
       reportOptions: { formatNumbers: '$0,0' },
       filters: [
-        { dimension: 'user_first_touch', operator: 'between', value: 'P1D', valueType: 'timestamp' },
+        { dimension: 'user_first_touch', operator: 'between', value: 'P7D', valueType: 'timestamp' },
       ],
     },
     whales_playing: {
