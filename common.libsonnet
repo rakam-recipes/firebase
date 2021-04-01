@@ -68,7 +68,7 @@ local predefined = import 'predefined.jsonnet';
       ],
     },
     ltv_revenue_total: {
-      aggregation: 'max',
+      aggregation: 'maximum',
       category: 'Revenue',
       sql: '{{dimension.ltv_revenue}}',
       reportOptions: { formatNumbers: '$0,0' },
