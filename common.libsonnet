@@ -67,22 +67,20 @@ local predefined = import 'predefined.jsonnet';
         { dimension: 'is_retained', operator: 'is', value: false, valueType: 'boolean' },
       ],
     },
-    ltv_revenue_total: {
-      aggregation: 'maximum',
-      label: 'Revenue',
-      sql: '{{dimension.ltv_revenue}}',
+    revenue: {
+      aggregation: 'sum',
+      category: 'Revenue',
+      column: 'event_value_in_usd',
+      reportOptions: { formatNumbers: '$0,0' },
+      filters: [{ dimension: 'event_name', operator: 'equals', value: 'in_app_purchase', valueType: 'string' }],
     },
     ltv_revenue_d1: {
-      aggregation: 'maximum',
       label: 'D1 LTV',
-      sql: '{{dimension.ltv_revenue}}',
-      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P1D', valueType: 'timestamp' }],
-    },
-    ltv_revenue_d7: {
-      aggregation: 'maximum',
-      label: 'D7 LTV',
-      sql: '{{dimension.ltv_revenue}}',
-      filters: [{ dimension: 'user_first_touch', operator: 'between', value: 'P7D', valueType: 'timestamp' }],
+      sql: '{{measure.revenue}}/{{measure.all_users}}',
+      reportOptions: { formatNumbers: '$0,0' },
+      filters: [
+        { dimension: 'user_first_touch', operator: 'between', value: 'P1D', valueType: 'timestamp' },
+      ],
     },
     whales_playing: {
       aggregation: 'countUnique',
