@@ -68,13 +68,14 @@ local predefined = import 'predefined.jsonnet';
       ],
     },
     ltv_revenue_total: {
-      aggregation: 'maximum',
+      aggregation: 'sum',
+      label: 'LTV',
       category: 'Revenue',
-      sql: '{{dimension.ltv_revenue}}',
+      sql: '{{dimension.ltv_increase}}',
       reportOptions: { formatNumbers: '$0,0' },
     },
     ltv_revenue_d7: {
-      label: 'D1 LTV',
+      label: 'D7 LTV',
       category: 'Revenue',
       sql: '{{measure.ltv_revenue_total}}/{{measure.all_users}}',
       reportOptions: { formatNumbers: '$0,0' },
@@ -120,6 +121,11 @@ local predefined = import 'predefined.jsonnet';
       sql: 'TIMESTAMP_DIFF({{dimension.event_timestamp}}, {{dimension.user_first_touch}}, DAY) > 1',
     },
     // Revenue
+    ltv_increase: {
+      type: 'double',
+      category: 'Revenue',
+      column: 'ltv_increase',
+    },
     event_value_in_usd: {
       type: 'double',
       category: 'Revenue',
@@ -338,20 +344,20 @@ local predefined = import 'predefined.jsonnet';
   all_events_revenue_measures: {
     revenue: {
       aggregation: 'sum',
-      category: 'Revenue',
+      category: 'IAP Revenue',
       column: 'event_value_in_usd',
       reportOptions: { formatNumbers: '$0,0' },
     },
     average_revenue_per_user: {
       category: 'Revenue',
-      label: 'ARPU [All]',
+      label: 'IAP ARPU [All]',
       sql: '1.0 * ({{measure.revenue}}/{{measure.all_users}})',
       type: 'double',
       reportOptions: { formatNumbers: '$0,0.00' },
     },
     average_revenue_per_new_user: {
       aggregation: 'average',
-      label: 'ARPU [New users]',
+      label: 'IAP ARPU [New users]',
       column: 'event_value_in_usd',
       category: 'Revenue',
       type: 'double',
@@ -362,7 +368,7 @@ local predefined = import 'predefined.jsonnet';
     },
     average_revenue_per_retained_user: {
       aggregation: 'average',
-      label: 'ARPU [Retained users]',
+      label: 'IAP ARPU [Retained users]',
       column: 'event_value_in_usd',
       category: 'Revenue',
       type: 'double',
