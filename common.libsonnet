@@ -80,7 +80,7 @@ local predefined = import 'predefined.jsonnet';
       sql: '{{measure.ltv_revenue_total}}/{{measure.all_users}}',
       reportOptions: { formatNumbers: '$0,0' },
       filters: [
-        { dimension: 'user_first_touch', operator: 'between', value: 'P7D', valueType: 'timestamp' },
+        { dimension: 'days_since_signup', operator: 'equals', value: 7, valueType: 'integer' },
       ],
     },
     whales_playing: {
@@ -101,6 +101,10 @@ local predefined = import 'predefined.jsonnet';
   dimensions: {
     event_timestamp: {
       sql: 'TIMESTAMP_MICROS({{TABLE}}.`event_timestamp`)',
+      type: 'timestamp',
+    },
+    days_since_signup: {
+      sql: 'TIMESTAMP_DIFF({{dimension.user_first_touch}}, {{dimension.event_timestamp}})',
       type: 'timestamp',
     },
     firebase_user_id: {
