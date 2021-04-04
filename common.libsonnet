@@ -74,15 +74,15 @@ local predefined = import 'predefined.jsonnet';
       sql: '{{dimension.ltv_increase}}',
       reportOptions: { formatNumbers: '$0,0' },
     },
-    // ltv_revenue_d7: {
-    //   label: 'D7 LTV',
-    //   category: 'Revenue',
-    //   sql: '{{measure.ltv_revenue_total}}/{{measure.all_users}}',
-    //   reportOptions: { formatNumbers: '$0,0' },
-    //   filters: [
-    //     { dimension: 'days_since_signup', operator: 'equals', value: 7, valueType: 'integer' },
-    //   ],
-    // },
+    ltv_revenue_d7: {
+      label: 'D7 LTV',
+      category: 'Revenue',
+      sql: '{{measure.ltv_revenue_total}}/{{measure.all_users}}',
+      reportOptions: { formatNumbers: '$0,0' },
+      filters: [
+        { dimension: 'days_since_signup', operator: 'equals', value: 7, valueType: 'integer' },
+      ],
+    },
     whales_playing: {
       aggregation: 'countUnique',
       sql: '{{dimension.firebase_user_id}}',
