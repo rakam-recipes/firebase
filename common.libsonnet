@@ -77,10 +77,10 @@ local predefined = import 'predefined.jsonnet';
     ltv_revenue_d7: {
       label: 'D7 LTV',
       category: 'Revenue',
-      sql: '{{measure.ltv_revenue_total}}/{{measure.all_users}}',
+      sql: 'IEEE_DIVIDE({{measure.ltv_revenue_total}}, {{measure.all_users}})',
       reportOptions: { formatNumbers: '$0,0' },
       filters: [
-        { dimension: 'days_since_signup', operator: 'equals', value: 7, valueType: 'integer' },
+        { dimension: 'days_since_signup', operator: 'lessThan', value: 8, valueType: 'integer' },
       ],
     },
     whales_playing: {
