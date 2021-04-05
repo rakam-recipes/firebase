@@ -358,7 +358,8 @@ local predefined = import 'predefined.jsonnet';
   all_events_revenue_measures: {
     revenue: {
       aggregation: 'sum',
-      category: 'IAP Revenue',
+      label: 'IAP Revenue',
+      category: 'Revenue',
       column: 'event_value_in_usd',
       reportOptions: { formatNumbers: '$0,0' },
     },
