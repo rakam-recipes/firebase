@@ -21,7 +21,7 @@ local common_measures = if (!installRevenue) then util.filter_object(function(k,
   mappings: common.mappings,
   relations: common.relations,
   sql: |||
-    SELECT *, `user_ltv`.`revenue` - coalesce(lag(`user_ltv`.`revenue`) over (PARTITION BY user_pseudo_id ORDER BY event_timestamp), 0) as ltv_increase FROM `%(project)s`.`%(dataset)s`.`events_*`
+    SELECT *, (1.0 * `user_ltv`.`revenue`) - coalesce(lag(`user_ltv`.`revenue`) over (PARTITION BY user_pseudo_id ORDER BY event_timestamp), 0) as ltv_increase FROM `%(project)s`.`%(dataset)s`.`events_*`
     {%% if partitioned %%} WHERE _TABLE_SUFFIX BETWEEN FORMAT_DATE("%%Y%%m%%d", DATE '{{date.start}}') and FORMAT_DATE("%%Y%%m%%d", DATE '{{date.end}}') {%% endif %%}
     %(intraday_query)s
   ||| % {

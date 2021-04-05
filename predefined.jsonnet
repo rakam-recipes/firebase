@@ -173,6 +173,7 @@
       },
       revenue: {
         aggregation: 'sum',
+        label: 'IAP Revenue',
         column: 'event_value_in_usd',
         reportOptions: { formatNumbers: '$0,0' },
       },

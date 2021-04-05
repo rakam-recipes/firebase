@@ -67,17 +67,23 @@ local predefined = import 'predefined.jsonnet';
         { dimension: 'is_retained', operator: 'is', value: false, valueType: 'boolean' },
       ],
     },
-    ltv_revenue_total: {
+    total_revenue: {
       aggregation: 'sum',
       label: 'LTV',
       category: 'Revenue',
       sql: '{{dimension.ltv_increase}}',
       reportOptions: { formatNumbers: '$0,0' },
     },
+    ltv_revenue: {
+      label: 'Revenue',
+      category: 'Revenue',
+      sql: 'IEEE_DIVIDE({{measure.ltv_revenue_total}}, {{measure.all_users}})',
+      reportOptions: { formatNumbers: '$0,0' },
+    },
     ltv_revenue_d7: {
       label: 'D7 LTV',
       category: 'Revenue',
-      sql: 'IEEE_DIVIDE({{measure.ltv_revenue_total}}, {{measure.all_users}})',
+      sql: '{{measure.ltv_revenue}}',
       reportOptions: { formatNumbers: '$0,0' },
       filters: [
         { dimension: 'days_since_signup', operator: 'lessThan', value: 8, valueType: 'integer' },
