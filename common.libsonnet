@@ -202,6 +202,7 @@ local predefined = import 'predefined.jsonnet';
       category: 'Revenue',
       sql: '{{TABLE}}.`user_ltv`.`revenue`',
       hidden: false,
+      description: 'The increase of LTV of the user. It can be used to calculate LTC Cohorts but since subsequent events such as in_app_purchase -> screen_view may not include the ltv_revenue, it should not be grouped by event_name',
       type: 'double',
     },
     ltv_currency: {
