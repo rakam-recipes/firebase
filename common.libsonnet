@@ -72,13 +72,13 @@ local predefined = import 'predefined.jsonnet';
       label: 'Total Revenue',
       category: 'Revenue',
       sql: '{{dimension.ltv_increase}}',
-      reportOptions: { formatNumbers: '$0,0[.]0000' },
+      reportOptions: { formatNumbers: '$0,0[.]000000' },
     },
     ltv_revenue: {
       label: 'LTV',
       category: 'LTV',
       sql: 'IEEE_DIVIDE({{measure.total_revenue}}, {{measure.all_users}})',
-      reportOptions: { formatNumbers: '$0,0[.]0000' },
+      reportOptions: { formatNumbers: '$0,0[.]00000000' },
     },
     ltv_revenue_d1: {
       label: 'D1 LTV',
