@@ -77,7 +77,7 @@ local predefined = import 'predefined.jsonnet';
     ltv_revenue: {
       label: 'Revenue',
       category: 'Revenue',
-      sql: 'IEEE_DIVIDE({{measure.ltv_revenue_total}}, {{measure.all_users}})',
+      sql: 'IEEE_DIVIDE({{measure.total_revenue}}, {{measure.all_users}})',
       reportOptions: { formatNumbers: '$0,0' },
     },
     ltv_revenue_d7: {
