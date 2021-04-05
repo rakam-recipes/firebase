@@ -28,7 +28,7 @@ std.map(function(event_type)
     category: 'Firebase Events',
     relations: common.relations + if defined != null && std.objectHas(defined, 'relations') then defined.relations else {},
     sql: |||
-      SELECT * FROM `%(project)s`.`%(dataset)s`.`events_*`
+      SELECT *, (1.0 * `user_ltv`.`revenue`) - coalesce(lag(`user_ltv`.`revenue`) over (PARTITION BY user_pseudo_id ORDER BY event_timestamp), 0) as ltv_increase FROM `%(project)s`.`%(dataset)s`.`events_*`
       WHERE event_name = '%(event)s' {%% if partitioned %%} AND _TABLE_SUFFIX BETWEEN FORMAT_DATE("%%Y%%m%%d", DATE '{{date.start}}') and FORMAT_DATE("%%Y%%m%%d", DATE '{{date.end}}') {%% endif %%}
       %(intraday_query)s
     ||| % {
