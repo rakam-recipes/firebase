@@ -120,7 +120,6 @@ local predefined = import 'predefined.jsonnet';
         { dimension: 'days_since_signup', operator: 'lessThan', value: 8, valueType: 'integer' },
       ],
     },
-      },
     ltv_revenue_d30: {
       label: 'D30 LTV',
       category: 'Revenue',
