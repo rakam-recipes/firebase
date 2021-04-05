@@ -119,11 +119,11 @@ local predefined = import 'predefined.jsonnet';
       type: 'timestamp',
     },
     days_since_signup: {
-      sql: 'TIMESTAMP_DIFF({{dimension.user_first_touch}}, {{dimension.event_timestamp}}, DAY)',
+      sql: 'TIMESTAMP_DIFF({{dimension.event_timestamp}}, {{dimension.user_first_touch}}, DAY)',
       type: 'integer',
     },
     weeks_since_signup: {
-      sql: 'TIMESTAMP_DIFF({{dimension.user_first_touch}}, {{dimension.event_timestamp}}, WEEK)',
+      sql: 'TIMESTAMP_DIFF({{dimension.event_timestamp}}, {{dimension.user_first_touch}}, WEEK)',
       type: 'integer',
     },
     firebase_user_id: {
