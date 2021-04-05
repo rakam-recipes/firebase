@@ -80,23 +80,55 @@ local predefined = import 'predefined.jsonnet';
       sql: 'coalesce(IEEE_DIVIDE({{measure.total_revenue}}, {{measure.all_users}}), 0)',
       reportOptions: { formatNumbers: '$0,0[.]00000000' },
     },
+    ltv_revenue_d0: {
+      label: 'D0 LTV',
+      category: 'Revenue',
+      sql: '{{measure.ltv_revenue}}',
+      description: 'Total revenue collected within 0 day from users whose first event was sent on D0 / Total number of users whose first event was sent on D0 and made an event within 0 day.',
+      reportOptions: { formatNumbers: '$0,0[.]00000000' },
+      filters: [
+        { dimension: 'days_since_signup', operator: 'lessThan', value: 1, valueType: 'integer' },
+      ],
+    },
     ltv_revenue_d1: {
       label: 'D1 LTV',
       category: 'Revenue',
       sql: '{{measure.ltv_revenue}}',
-      description: 'Total revenue / bisey bisey',
+      description: 'Total revenue collected within 1 day from users whose first event was sent on D0 / Total number of users whose first event was sent on D0 and made an event within 1 day.',
       reportOptions: { formatNumbers: '$0,0[.]00000000' },
       filters: [
         { dimension: 'days_since_signup', operator: 'lessThan', value: 2, valueType: 'integer' },
+      ],
+    },
+    ltv_revenue_d3: {
+      label: 'D3 LTV',
+      category: 'Revenue',
+      sql: '{{measure.ltv_revenue}}',
+      description: 'Total revenue collected within 3 days from users whose first event was sent on D0 / Total number of users whose first event was sent on D0 and made an event within 3 days.',
+      reportOptions: { formatNumbers: '$0,0[.]00000000' },
+      filters: [
+        { dimension: 'days_since_signup', operator: 'lessThan', value: 4, valueType: 'integer' },
       ],
     },
     ltv_revenue_d7: {
       label: 'D7 LTV',
       category: 'Revenue',
       sql: '{{measure.ltv_revenue}}',
+      description: 'Total revenue collected within 7 days from users whose first event was sent on D0 / Total number of users whose first event was sent on D0 and made an event within 7 days.',
       reportOptions: { formatNumbers: '$0,0[.]00000000' },
       filters: [
         { dimension: 'days_since_signup', operator: 'lessThan', value: 8, valueType: 'integer' },
+      ],
+    },
+      },
+    ltv_revenue_d30: {
+      label: 'D30 LTV',
+      category: 'Revenue',
+      sql: '{{measure.ltv_revenue}}',
+      description: 'Total revenue collected within 30 days from users whose first event was sent on D0 / Total number of users whose first event was sent on D0 and made an event within 30 days.',
+      reportOptions: { formatNumbers: '$0,0[.]00000000' },
+      filters: [
+        { dimension: 'days_since_signup', operator: 'lessThan', value: 31, valueType: 'integer' },
       ],
     },
     whales_playing: {
