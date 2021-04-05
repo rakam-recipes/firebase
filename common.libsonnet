@@ -80,6 +80,15 @@ local predefined = import 'predefined.jsonnet';
       sql: 'IEEE_DIVIDE({{measure.total_revenue}}, {{measure.all_users}})',
       reportOptions: { formatNumbers: '$0,0[.]0000' },
     },
+    ltv_revenue_d1: {
+      label: 'D1 LTV',
+      category: 'Revenue',
+      sql: '{{measure.ltv_revenue}}',
+      reportOptions: { formatNumbers: '$0,0[.]0000' },
+      filters: [
+        { dimension: 'days_since_signup', operator: 'lessThan', value: 2, valueType: 'integer' },
+      ],
+    },
     ltv_revenue_d7: {
       label: 'D7 LTV',
       category: 'Revenue',
