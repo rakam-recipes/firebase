@@ -175,14 +175,14 @@
         aggregation: 'sum',
         label: 'IAP Revenue',
         column: 'event_value_in_usd',
-        reportOptions: { formatNumbers: '$0,0' },
+        reportOptions: { formatNumbers: '$0,0[.]00' },
       },
       transaction_count_per_paying_user: {
         sql: 'IEEE_DIVIDE({{measure.total_transactions}}, {{measure.paying_users}})',
       },
       average_transaction_per_paying_user: {
         sql: 'IEEE_DIVIDE({{measure.revenue}}, {{measure.paying_users}})',
-        reportOptions: { formatNumbers: '$0,0' },
+        reportOptions: { formatNumbers: '$0,0[.]00' },
       },
       revenue_from_retained_users: {
         aggregation: 'sum',
@@ -190,7 +190,7 @@
         filters: [
           { dimension: 'is_retained', operator: 'is', value: true, valueType: 'boolean' },
         ],
-        reportOptions: { formatNumbers: '$0,0' },
+        reportOptions: { formatNumbers: '$0,0[.]00' },
       },
       revenue_from_new_users: {
         aggregation: 'sum',
@@ -198,13 +198,13 @@
         filters: [
           { dimension: 'is_retained', operator: 'is', value: false, valueType: 'boolean' },
         ],
-        reportOptions: { formatNumbers: '$0,0' },
+        reportOptions: { formatNumbers: '$0,0[.]00' },
       },
       revenue_from_whales: {
         aggregation: 'sum',
         column: 'event_value_in_usd',
         filters: [{ dimension: 'is_whale', operator: 'is', value: true, valueType: 'boolean' }],
-        reportOptions: { formatNumbers: '$0,0' },
+        reportOptions: { formatNumbers: '$0,0[.]00' },
       },
       revenue_whales_ratio: {
         sql: 'IEEE_DIVIDE({{measure.revenue_from_whales}}, {{measure.revenue}})',
