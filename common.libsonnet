@@ -84,7 +84,7 @@ local predefined = import 'predefined.jsonnet';
       label: 'D1 LTV',
       category: 'Revenue',
       sql: '{{measure.ltv_revenue}}',
-      reportOptions: { formatNumbers: '$0,0[.]0000' },
+      reportOptions: { formatNumbers: '$0,0[.]00000000' },
       filters: [
         { dimension: 'days_since_signup', operator: 'lessThan', value: 2, valueType: 'integer' },
       ],
@@ -93,7 +93,7 @@ local predefined = import 'predefined.jsonnet';
       label: 'D7 LTV',
       category: 'Revenue',
       sql: '{{measure.ltv_revenue}}',
-      reportOptions: { formatNumbers: '$0,0[.]0000' },
+      reportOptions: { formatNumbers: '$0,0[.]00000000' },
       filters: [
         { dimension: 'days_since_signup', operator: 'lessThan', value: 8, valueType: 'integer' },
       ],
