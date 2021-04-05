@@ -69,22 +69,22 @@ local predefined = import 'predefined.jsonnet';
     },
     total_revenue: {
       aggregation: 'sum',
-      label: 'LTV',
+      label: 'Total Revenue',
       category: 'Revenue',
       sql: '{{dimension.ltv_increase}}',
-      reportOptions: { formatNumbers: '$0,0' },
+      reportOptions: { formatNumbers: '$0,0000' },
     },
     ltv_revenue: {
-      label: 'Revenue',
-      category: 'Revenue',
+      label: 'LTV',
+      category: 'LTV',
       sql: 'IEEE_DIVIDE({{measure.total_revenue}}, {{measure.all_users}})',
-      reportOptions: { formatNumbers: '$0,0' },
+      reportOptions: { formatNumbers: '$0,0000' },
     },
     ltv_revenue_d7: {
       label: 'D7 LTV',
       category: 'Revenue',
       sql: '{{measure.ltv_revenue}}',
-      reportOptions: { formatNumbers: '$0,0' },
+      reportOptions: { formatNumbers: '$0,0000' },
       filters: [
         { dimension: 'days_since_signup', operator: 'lessThan', value: 8, valueType: 'integer' },
       ],
