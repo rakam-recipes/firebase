@@ -126,7 +126,7 @@
     measures: {
       average_engagement_time: {
         aggregation: 'average',
-        dimension: 'engagement_time_msec',
+        dimension: 'event__engagement_time_msec',
       },
     },
   },
