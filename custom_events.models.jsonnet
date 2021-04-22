@@ -38,7 +38,7 @@ std.map(function(event_type)
       intraday_query: if std.extVar('intradayAnalytics') == true then
         |||
           UNION ALL
-          SELECT * FROM `%(project)s`.`%(dataset)s`.`events_intraday_*`
+          SELECT *, null FROM `%(project)s`.`%(dataset)s`.`events_intraday_*`
           WHERE event_name = '%(event)s' {%% if partitioned %%}  AND _TABLE_SUFFIX BETWEEN FORMAT_DATE("%%Y%%m%%d", DATE '{{date.start}}') and FORMAT_DATE("%%Y%%m%%d", DATE '{{date.end}}') {%% endif %%}
         ||| % {
           project: target.database,
