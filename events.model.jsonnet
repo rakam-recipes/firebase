@@ -30,7 +30,7 @@ local common_measures = if (!installRevenue) then util.filter_object(function(k,
     intraday_query: if std.extVar('intradayAnalytics') == true then
       |||
         UNION ALL
-        SELECT * FROM `%(project)s`.`%(dataset)s`.`events_intraday_*`
+        SELECT *, null FROM `%(project)s`.`%(dataset)s`.`events_intraday_*`
         {%% if partitioned %%} WHERE _TABLE_SUFFIX BETWEEN FORMAT_DATE("%%Y%%m%%d", DATE '{{date.start}}') and FORMAT_DATE("%%Y%%m%%d", DATE '{{date.end}}') {%% endif %%}
       ||| % {
         project: target.database,
