@@ -47,7 +47,7 @@ local installRevenue = std.extVar('installRevenue');
       type: 'segmentation',
       options: {
         model: 'firebase_events',
-        measures: ['active_users', 'all_users', 'new_users', 'paying_users', 'whales_playing'],
+        measures: if installRevenue then ['active_users', 'all_users', 'new_users', 'paying_users', 'whales_playing'] else ['active_users', 'all_users', 'new_users'],
         dimensions: [{
           name: 'event_timestamp',
           timeframe: 'day',

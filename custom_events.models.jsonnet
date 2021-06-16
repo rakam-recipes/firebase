@@ -2,7 +2,6 @@ local common = import 'common.libsonnet';
 local predefined = import 'predefined.jsonnet';
 local util = import 'util.libsonnet';
 
-
 local all_event_props = common.get_event_properties;
 local unique_events = std.uniq(std.sort(std.map(function(attr) attr.event_name, all_event_props)));
 
@@ -23,7 +22,7 @@ std.map(function(event_type)
   {
     name: 'firebase_event_' + event_type,
     label: (if defined != null then '[Firebase] ' else '') + event_type,
-    measures: common.measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
+    measures: common.measures + common.all_events_revenue_measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
     mappings: common.mappings,
     category: 'Firebase Events',
     relations: common.relations + if defined != null && std.objectHas(defined, 'relations') then defined.relations else {},
