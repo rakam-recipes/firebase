@@ -7,6 +7,10 @@ local unique_events = std.uniq(std.sort(std.map(function(attr) attr.event_name, 
 
 local user_props = common.get_user_properties();
 local target = std.extVar('schema');
+local installRevenue = std.extVar('installRevenue');
+
+local common_measures_all = common.measures + common.all_events_revenue_measures;
+local common_measures = if (!installRevenue) then util.filter_object(function(k, measure) !std.objectHas(measure, 'category') || measure.category != 'Revenue', common_measures_all) else common_measures_all;
 
 std.map(function(event_type)
   local current_event_props = std.filter(function(p) p.event_name == event_type, all_event_props);
@@ -22,7 +26,7 @@ std.map(function(event_type)
   {
     name: 'firebase_event_' + event_type,
     label: (if defined != null then '[Firebase] ' else '') + event_type,
-    measures: common.measures + common.all_events_revenue_measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
+    measures: common_measures + if defined != null && std.objectHas(defined, 'measures') then defined.measures else {},
     mappings: common.mappings,
     category: 'Firebase Events',
     relations: common.relations + if defined != null && std.objectHas(defined, 'relations') then defined.relations else {},
